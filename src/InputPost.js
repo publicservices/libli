@@ -51,8 +51,6 @@ class InputPost extends React.Component {
                 uploadFile: null,
             });
 
-	    const trackUrl = 'https://youtu.be/fYcv3cg61b8'
-
             if (this.state.inputPost.length > 0) {
                 await this.props.client.postNewThread({
 		    text: this.state.inputPost,
