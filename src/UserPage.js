@@ -125,7 +125,6 @@ class UserPage extends React.Component {
     getTracks() {
 	return this.state.timeline
             .filter((ev) => {
-		console.log('message', ev)
                 // only messages sent by this user
                 if (
                     ev.type !== "m.room.message" ||
