@@ -49,7 +49,7 @@ class TimelinePage extends React.Component {
         try {
             let timelineInfo = await this.props.client.getAggregatedTimeline();
             if (timelineInfo.timeline.length === 0) {
-                window.location.href = "/" + this.props.client.userId;
+                /* window.location.href = "/" + this.props.client.userId; */
             }
             let roomSet = new Set();
             for (let ev of timelineInfo.timeline) {
