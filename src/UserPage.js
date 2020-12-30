@@ -221,9 +221,7 @@ class UserPage extends React.Component {
             );
         }
 
-        let userPageHeader;
-        if (!this.props.client.isGuest) {
-            userPageHeader = (
+        let userPageHeader = (
                 <div className="UserPageHeader">
                     <div className="userSection">
                         {this.state.userProfile?.avatar_url && (
@@ -246,7 +244,6 @@ class UserPage extends React.Component {
                     {errBlock}
                 </div>
             );
-        }
 
         let postTab = " tab";
         let postAndReplyTab = " tab";
