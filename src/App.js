@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "radio4000-player"
 import UserPage from "./UserPage";
 import StatusPage from "./StatusPage";
 import TimelinePage from "./TimelinePage";
@@ -75,6 +76,23 @@ class App extends React.Component {
         }
     }
 
+    listenPlayer($mediaPlayer) {
+	/* let's catch when track change, so we can do stuff */
+	$mediaPlayer.addEventListener('trackChanged', (event) => {
+	    const eventData = event.detail[0]
+	    console.info('trackChanged event', event.detail[0])
+
+	    console.log(eventData)
+
+	    /* it is the first track */
+	    if (!eventData || eventData.previousTrack || eventData.previousTrack.id) {
+		this.setState({
+		    showMediaPlayer: true
+		})
+	    }
+	})
+    }
+
     async registerAsGuest() {
         try {
             let serverUrl = this.state.inputLoginUrl + "/_matrix/client";
@@ -130,6 +148,9 @@ class App extends React.Component {
         this.setState({
             showFilterPane: !this.state.showFilterPane,
         });
+    }
+    onPlay(ev) {
+        console.log('app click', ev)
     }
 
     onKeyDown(formType, event) {
@@ -296,6 +317,7 @@ class App extends React.Component {
                     client={this.props.client}
                     userId={this.state.viewingUserId}
                     withReplies={this.state.withReplies}
+                    player={this.props.player}
                 />
             );
         } else if (this.state.page === "status") {
@@ -325,18 +347,26 @@ class App extends React.Component {
         if (this.state.error) {
             errMsg = <div className="errblock">{this.state.error}</div>;
         }
+
+	let mediaPlayer = (
+	    <aside>
+		<radio4000-player></radio4000-player>
+	    </aside>
+	);
+	
         return (
             <div className="App">
                 <header className="AppHeader">
                     <div
                         className="titleAndLogo"
-                        onClick={this.onLogoClick.bind(this)}
                     >
-                        <img src="/icon.svg" alt="logo" />
-                        <div className="title">CERULEAN</div>
+                        <div className="title">r4.CERULEAN</div>
                     </div>
                     {this.loginLogoutButton()}
                 </header>
+
+		{mediaPlayer}
+		
                 <main className="AppMain">{this.renderPage()}</main>
                 {filterPane}
                 <Modal

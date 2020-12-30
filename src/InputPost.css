@@ -1,6 +1,6 @@
 .inputPostWithButton {
     display:flex;
-    flex-direction:row;
+    flex-direction: column;
 }
 
 .inputPostUploadButton {
@@ -10,10 +10,9 @@
 
 .inputPost{
     background: #FFFFFF;
-    border: 0px;
-    border-radius: 200px;
-    flex-grow:2;
-    padding-left: 16px;
+    border: 1px solid black;
+    padding: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 .inputPost:focus {
     outline: none;

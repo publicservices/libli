@@ -407,7 +407,8 @@ class Client {
         return data.room_id;
     }
 
-    async postNewThread(text, dataUri) {
+    async postNewThread({text, dataUri, trackTitle, trackUrl}) {
+	// `text` is r4 track.body
         // create a new room
         let data = await this.fetchJson(`${this.serverUrl}/r0/createRoom`, {
             method: "POST",
@@ -422,8 +423,10 @@ class Client {
         });
         text = text || "";
         let content = {
-            msgtype: "m.text",
+            msgtype: "m.r4",
             body: text,
+	    trackUrl,
+	    trackTitle
         };
         if (dataUri) {
             content = {

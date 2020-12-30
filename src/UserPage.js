@@ -122,6 +122,42 @@ class UserPage extends React.Component {
         window.location.href = link;
     }
 
+    getTracks() {
+	return this.state.timeline
+            .filter((ev) => {
+		console.log('message', ev)
+                // only messages sent by this user
+                if (
+                    ev.type !== "m.room.message" ||
+                    ev.sender !== this.props.userId
+                ) {
+                    return false;
+                }
+                // only messages with cerulean fields
+                if (
+                    !ev.content["org.matrix.cerulean.event_id"]
+                ) {
+                    return false;
+                }
+                // all posts and replies
+                if (this.state.withReplies) {
+                    return true;
+                }
+                // only posts
+                if (ev.content["org.matrix.cerulean.root"]) {
+                    return true;
+                }
+                return false;
+            })
+    }
+    onMessageClick(message) {
+	const tracks = this.getTracks()
+        this.props.player.play({
+	    track: message,
+	    tracks
+	})
+    }
+
     render() {
         let timelineBlock;
         let errBlock;
@@ -138,42 +174,18 @@ class UserPage extends React.Component {
                 let hasEntries = false;
                 timelineBlock = (
                     <div>
-                        {this.state.timeline
-                            .filter((ev) => {
-                                // only messages sent by this user
-                                if (
-                                    ev.type !== "m.room.message" ||
-                                    ev.sender !== this.props.userId
-                                ) {
-                                    return false;
-                                }
-                                // only messages with cerulean fields
-                                if (
-                                    !ev.content["org.matrix.cerulean.event_id"]
-                                ) {
-                                    return false;
-                                }
-                                // all posts and replies
-                                if (this.state.withReplies) {
-                                    return true;
-                                }
-                                // only posts
-                                if (ev.content["org.matrix.cerulean.root"]) {
-                                    return true;
-                                }
-                                return false;
-                            })
-                            .map((ev) => {
-                                hasEntries = true;
-                                return (
-                                    <Message
-                                        key={ev.event_id}
-                                        event={ev}
-                                        isTimelineEvent={true}
-                                        onPost={this.onReplied.bind(this)}
-                                    />
-                                );
-                            })}
+                        {this.getTracks().map((ev) => {
+                            hasEntries = true;
+                            return (
+                                <Message
+                                    key={ev.event_id}
+                                    event={ev}
+                                    isTimelineEvent={true}
+                                    onPost={this.onReplied.bind(this)}
+				    onClick={this.onMessageClick.bind(this)}
+                                />
+                            );
+                        })}
                     </div>
                 );
                 if (!hasEntries) {
@@ -183,15 +195,7 @@ class UserPage extends React.Component {
                     if (this.state.isMe) {
                         emptyListText = (
                             <span>
-                                No posts yet. Check the{" "}
-                                <a
-                                    href={
-                                        "/@matthew:dendrite.matrix.org/!k1vs5pdsUeTpGOYd:dendrite.matrix.org/$OFpdqr-ZMaCRN68pcNaAZULhR-MOTi7f8_9fUxTHpKg"
-                                    }
-                                >
-                                    welcome post
-                                </a>
-                                .
+                                No tracks yet.
                             </span>
                         );
                     } else {
@@ -218,7 +222,6 @@ class UserPage extends React.Component {
         }
 
         let userPageHeader;
-
         if (!this.props.client.isGuest) {
             userPageHeader = (
                 <div className="UserPageHeader">
@@ -260,13 +263,13 @@ class UserPage extends React.Component {
                         className={postTab}
                         onClick={this.onPostsClick.bind(this)}
                     >
-                        Posts
+                        Tracks
                     </span>
                     <span
                         className={postAndReplyTab}
                         onClick={this.onPostsAndRepliesClick.bind(this)}
                     >
-                        Posts and replies
+                        Tracks and replies
                     </span>
                 </div>
                 <div className=" UserPageBody">{timelineBlock}</div>

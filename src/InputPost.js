@@ -10,8 +10,12 @@ class InputPost extends React.Component {
         super(props);
         this.state = {
             inputPost: "",
-            uploadFile: null,
+	    inputTrackUrl:"",
+	    inputTrackTitle:"",
             loading: false,
+	    
+	    /* not using */
+            uploadFile: null,
         };
     }
 
@@ -47,11 +51,15 @@ class InputPost extends React.Component {
                 uploadFile: null,
             });
 
+	    const trackUrl = 'https://youtu.be/fYcv3cg61b8'
+
             if (this.state.inputPost.length > 0) {
-                await this.props.client.postNewThread(
-                    this.state.inputPost,
-                    dataUri
-                );
+                await this.props.client.postNewThread({
+		    text: this.state.inputPost,
+                    dataUri: dataUri,
+		    trackTitle: this.state.inputTrackTitle,
+		    trackUrl: this.state.inputTrackUrl,
+		});
             }
             this.setState({ inputPost: "" });
             if (this.props.onPost) {
@@ -76,19 +84,13 @@ class InputPost extends React.Component {
         if (!this.props.client.accessToken) {
             return <div />;
         }
-        let imgSrc = "/send.svg";
         let classes = "inputPostSendButton";
-        if (this.state.inputPost.length > 0) {
-            imgSrc = "/send-active.svg";
-            classes = "inputPostSendButtonActive";
-        }
         return (
-            <img
-                src={imgSrc}
-                alt="send"
+            <button
+                alt="Create track"
                 className={classes}
                 onClick={this.onPostClick.bind(this)}
-            />
+            >Add</button>
         );
     }
 
@@ -99,24 +101,45 @@ class InputPost extends React.Component {
         return (
             <div>
                 <div className="inputPostWithButton">
-                    <input
+		    <input
+                        name="inputTrackTitle"
+                        className="inputPost"
+                        type="text"
+                        placeholder="Track title"
+                        onKeyDown={this.handleKeyDown.bind(this)}
+                        onChange={this.handleInputChange.bind(this)}
+                        value={this.state.inputTrackTitle}
+                    ></input>              
+
+		    <input
+                        name="inputTrackUrl"
+                        className="inputPost"
+                        type="text"
+                        placeholder="Track URL"
+			onKeyDown={this.handleKeyDown.bind(this)}
+                        onChange={this.handleInputChange.bind(this)}
+                        value={this.state.inputTrackUrl}
+                    ></input>
+
+		    <textarea
                         name="inputPost"
                         className="inputPost"
                         type="text"
-                        placeholder="What's happening?"
+                        placeholder="Track body"
                         onKeyDown={this.handleKeyDown.bind(this)}
                         onChange={this.handleInputChange.bind(this)}
                         value={this.state.inputPost}
-                    ></input>
+                    ></textarea>
+		    
                     {this.postButton()}
                 </div>
-                <input
+                {/* <input
                     className="inputPostUploadButton"
                     type="file"
                     name="file"
                     accept="image/*"
                     onChange={this.onUploadFileClick.bind(this)}
-                />
+                    /> */}
             </div>
         );
     }

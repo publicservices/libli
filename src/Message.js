@@ -141,6 +141,9 @@ class Message extends React.Component {
     onAuthorClick(author) {
         window.location.href = `/${author}`;
     }
+    handleMessageClick = () => {
+	this.props.onClick(this.props.event);
+    }
 
     onUnhideClick() {
         this.setState({
@@ -218,20 +221,17 @@ class Message extends React.Component {
         }
         return (
             <div className="MessageBody">
-                <div className="MessageHeader">
-                    <div
-                        className="MessageAuthor"
-                        onClick={this.onAuthorClick.bind(this, event.sender)}
-                    >
-                        {event.sender}{" "}
-                    </div>
-                    {this.renderTime(event.origin_server_ts)}
+		<div
+                    className="MessageTitle"
+                    onClick={this.handleMessageClick.bind(this)}
+                >
+                    <strong>{"" + event.content.trackTitle}</strong>
                 </div>
                 <div
                     className="MessageText"
                     style={blurStyle}
                     title={hiddenTooltip}
-                    onClick={handler}
+                    onClick={this.handleMessageClick.bind(this)}
                 >
                     {"" + event.content.body}
                 </div>
@@ -360,7 +360,7 @@ class Message extends React.Component {
                 <div className="MessageButtons">
                     <span className="moreCommentsButton">{replies}</span>
                     {replyButton}
-
+		    
                     {this.state.error ? (
                         <div>Error: {JSON.stringify(this.state.error)}</div>
                     ) : (

@@ -54,7 +54,7 @@ This test jig could also be used for experimenting with other threaded conversat
  * Newsgroups
  * HN/Reddit style forums
 
-## To build
+## To Run dev server3
 
 ```
 yarn install
