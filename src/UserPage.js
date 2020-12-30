@@ -152,7 +152,7 @@ class UserPage extends React.Component {
     }
     onMessageClick(message) {
 	const tracks = this.getTracks()
-        this.props.player.play({
+        this.props.onPlay({
 	    track: message,
 	    tracks
 	})

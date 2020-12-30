@@ -150,7 +150,10 @@ class App extends React.Component {
         });
     }
     onPlay(ev) {
-        console.log('app click', ev)
+        this.setState({
+	    isPlaying: true
+	})
+	this.props.player.play(ev)
     }
 
     onKeyDown(formType, event) {
@@ -317,7 +320,7 @@ class App extends React.Component {
                     client={this.props.client}
                     userId={this.state.viewingUserId}
                     withReplies={this.state.withReplies}
-                    player={this.props.player}
+                    onPlay={this.onPlay.bind(this)}
                 />
             );
         } else if (this.state.page === "status") {
@@ -348,11 +351,12 @@ class App extends React.Component {
             errMsg = <div className="errblock">{this.state.error}</div>;
         }
 
-	let mediaPlayer = (
-	    <aside>
-		<radio4000-player></radio4000-player>
-	    </aside>
-	);
+	let playerClasses
+	if (this.state.isPlaying) {
+	    playerClasses = 'Player Player--isPlaying'
+	} else {
+	    playerClasses = 'Player'
+	}
 	
         return (
             <div className="App">
@@ -360,12 +364,16 @@ class App extends React.Component {
                     <div
                         className="titleAndLogo"
                     >
-                        <div className="title">r4.CERULEAN</div>
+                        <div className="title">
+			    <a href="/">r4.CERULEAN</a>
+			</div>
                     </div>
                     {this.loginLogoutButton()}
                 </header>
 
-		{mediaPlayer}
+		<aside class={ `${playerClasses}` }>
+		    <radio4000-player></radio4000-player>
+		</aside>
 		
                 <main className="AppMain">{this.renderPage()}</main>
                 {filterPane}

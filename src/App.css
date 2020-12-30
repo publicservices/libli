@@ -3,6 +3,11 @@
     src: url('/Inter.ttf');
 }
 
+:root {
+    --color-theme: #5e1ae6;
+    --color-white: white;
+}
+
 body {
     margin: 0px;
 }
@@ -13,12 +18,14 @@ body {
 }
 
 .AppHeader{
-    color: #FFFFFF;
-    background: #2952BE;
-    width: 100%;
-    height: 47px;
-    left: 0px;
-    top: 0px;
+    color: var(--color-white);
+    background: var(--color-theme);
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
 }
 
 .AppMain {
@@ -27,12 +34,7 @@ body {
 }
 
 .topRightNav{
-    margin-right: 16px;
-    float: right;
-    transform: translate(0%, 50%);
-    min-width: 0;
-    max-width: 40%;
-    display: flex;
+    /* display: flex; */
 }
 
 .spacer {
@@ -51,14 +53,15 @@ body {
     margin-left: 8px;
 }
 
-.titleAndLogo{
+.titleAndLogo {
     display: flex;
     align-items: center;
-    cursor: pointer;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: 23px; /* AppHeader.height / 2 */
+}
+.titleAndLogo a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    display: flex;
 }
 
 .lightButton {
@@ -235,4 +238,18 @@ button:hover{
     .topRightNav {
         max-width: 60%;
     }
+}
+
+
+/* custom r4 player */
+.Player {
+    display: none;
+}
+.Player--isPlaying {
+    display: block;
+    position: sticky;
+    top: 0;
+}
+.Player radio4000-player {
+    height: 100%;
 }
