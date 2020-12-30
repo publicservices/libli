@@ -371,7 +371,7 @@ class App extends React.Component {
                     {this.loginLogoutButton()}
                 </header>
 
-		<aside class={ `${playerClasses}` }>
+		<aside className={ `${playerClasses}` }>
 		    <radio4000-player></radio4000-player>
 		</aside>
 		

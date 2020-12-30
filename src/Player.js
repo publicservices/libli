@@ -27,15 +27,14 @@ class Player {
     buildPlaylist({tracks, channel}) {
 	// Create a playlist.
 	const playlist = {
-	    title: 'A random title',
-	    image: '',
+	    title: channel.displayname,
+	    image: channel.avatar_url,
 	    tracks: this.serializeTracks(tracks)
 	}
 	return playlist
     }
     serializeTracks(tracks) {
 	return tracks.map(track => {
-	    console.log('track', track)
 	    return {
 		id: track.event_id,
 		title: track.content.trackTitle,

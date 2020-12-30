@@ -1,3 +1,10 @@
+# r4.cerulean
+
+A fork of cerulean.matrix.org, to test and see what this whole can do.
+
+Integrating new custom data on a message/tweet model to use them as a `radio4000.track` model, and load it as a playlist into the `radio4000-player` npm package.
+
+
 # Cerulean
 
 Cerulean is a highly experimental [Matrix](https://matrix.org) client intended to

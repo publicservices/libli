@@ -154,7 +154,8 @@ class UserPage extends React.Component {
 	const tracks = this.getTracks()
         this.props.onPlay({
 	    track: message,
-	    tracks
+	    tracks,
+	    channel: this.state.userProfile
 	})
     }
 
