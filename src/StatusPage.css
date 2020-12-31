@@ -38,7 +38,6 @@
 }
 
 .StatusPage{
-    background: #F7F7F7;
     border-radius: 12px 12px 0px 0px;
     padding: 20px;
 }
@@ -65,7 +64,8 @@
     margin-top: 16px;
     margin-bottom: 16px;
     padding: 2px;
-    display: flex;
+    display: none;
+    /* display: flex; */
     justify-content: flex-end;
     cursor: pointer;
     user-select: none;

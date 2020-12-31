@@ -8,20 +8,11 @@ class Player {
         }
     }
 
-    play({
-	track,
-	tracks,
-	channel
-    }) {
-	const $player = document.querySelector('radio4000-player')
-	var vue = $player.getVueInstance()
-
-	const playlist = this.buildPlaylist({
-	    tracks,
-	    channel
-	})
-	
-	vue.updatePlaylist(playlist)
+    play({track, tracks, channel}) {
+	const $player = document.querySelector('library-player')
+	const playlist = this.buildPlaylist({tracks, channel})
+	console.log($player)
+	$player.updatePlaylist(playlist)
     }
 
     buildPlaylist({tracks, channel}) {

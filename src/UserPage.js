@@ -122,7 +122,7 @@ class UserPage extends React.Component {
         window.location.href = link;
     }
 
-    getTracks() {
+    getPosts() {
 	return this.state.timeline
             .filter((ev) => {
                 // only messages sent by this user
@@ -150,7 +150,7 @@ class UserPage extends React.Component {
             })
     }
     onMessageClick(message) {
-	const tracks = this.getTracks()
+	const tracks = this.getPosts()
         this.props.onPlay({
 	    track: message,
 	    tracks,
@@ -173,8 +173,8 @@ class UserPage extends React.Component {
             } else {
                 let hasEntries = false;
                 timelineBlock = (
-                    <div>
-                        {this.getTracks().map((ev) => {
+                    <div className="Messages">
+                        {this.getPosts().map((ev) => {
                             hasEntries = true;
                             return (
                                 <Message
@@ -195,7 +195,7 @@ class UserPage extends React.Component {
                     if (this.state.isMe) {
                         emptyListText = (
                             <span>
-                                No tracks yet.
+                                No posts yet.
                             </span>
                         );
                     } else {
@@ -255,18 +255,18 @@ class UserPage extends React.Component {
 
         let userPageBody = (
             <div>
-                <div className="tabGroup">
+                <div className="tabGroup display-none">
                     <span
                         className={postTab}
                         onClick={this.onPostsClick.bind(this)}
                     >
-                        Tracks
+                        Posts
                     </span>
                     <span
                         className={postAndReplyTab}
                         onClick={this.onPostsAndRepliesClick.bind(this)}
                     >
-                        Tracks and replies
+                        Posts and replies
                     </span>
                 </div>
                 <div className=" UserPageBody">{timelineBlock}</div>

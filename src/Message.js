@@ -207,36 +207,40 @@ class Message extends React.Component {
         }
 
         let image;
-        if (event.content.msgtype === "m.image" && event.content.url) {
+        if (event.content.url) {
             image = (
-                <img
-                    alt="user upload"
-                    style={blurStyle}
-                    className="userImage"
-                    title={hiddenTooltip}
-                    onClick={handler}
-                    src={this.context.client.downloadLink(event.content.url)}
-                />
+                <picture className="MessageMedia">
+		    <img
+			alt="user upload"
+			style={blurStyle}
+			className="userImage"
+			title={hiddenTooltip}
+			onClick={handler}
+			src={this.context.client.downloadLink(event.content.url)}
+                    />
+		</picture>
             );
         }
         return (
-            <div className="MessageBody">
-		<div
-                    className="MessageTitle"
-                    onClick={this.handleMessageClick.bind(this)}
-                >
-                    <strong>{"" + event.content.trackTitle}</strong>
-                </div>
-                <div
-                    className="MessageText"
-                    style={blurStyle}
-                    title={hiddenTooltip}
-                    onClick={this.handleMessageClick.bind(this)}
-                >
-                    {"" + event.content.body}
-                </div>
+            <div className="MessageContent">
                 {image}
-            </div>
+		<div className="MessageBody">
+		    <div
+			className="MessageTitle"
+			onClick={this.handleMessageClick.bind(this)}
+                    >
+			<strong>{"" + event.content.title}</strong>
+                    </div>
+                    <div
+			className="MessageText"
+			style={blurStyle}
+			title={hiddenTooltip}
+			onClick={this.handleMessageClick.bind(this)}
+                    >
+			{"" + event.content.body}
+                    </div>
+		</div>
+	    </div>
         );
     }
 

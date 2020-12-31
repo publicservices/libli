@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import "radio4000-player"
+import "./custom-elements/library-player.js"
 import UserPage from "./UserPage";
 import StatusPage from "./StatusPage";
 import TimelinePage from "./TimelinePage";
@@ -365,18 +365,20 @@ class App extends React.Component {
                         className="titleAndLogo"
                     >
                         <div className="title">
-			    <a href="/">r4.CERULEAN</a>
+			    <a href="/">Library</a>
 			</div>
                     </div>
                     {this.loginLogoutButton()}
                 </header>
 
 		<aside className={ `${playerClasses}` }>
-		    <radio4000-player></radio4000-player>
+		    <library-player></library-player>
 		</aside>
 		
                 <main className="AppMain">{this.renderPage()}</main>
+		
                 {filterPane}
+
                 <Modal
                     show={this.state.showLoginModal}
                     handleClose={this.onLoginClose.bind(this)}

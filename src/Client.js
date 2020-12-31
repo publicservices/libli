@@ -407,7 +407,7 @@ class Client {
         return data.room_id;
     }
 
-    async postNewThread({text, dataUri, trackTitle, trackUrl}) {
+    async postNewThread({text, dataUri, title, mediaUrl}) {
 	// `text` is r4 track.body
         // create a new room
         let data = await this.fetchJson(`${this.serverUrl}/r0/createRoom`, {
@@ -423,18 +423,13 @@ class Client {
         });
         text = text || "";
         let content = {
-            msgtype: "m.r4",
+            msgtype: "m.library",
+	    title,
+            url: dataUri,
             body: text,
-	    trackUrl,
-	    trackTitle
+	    mediaUrl,
         };
-        if (dataUri) {
-            content = {
-                msgtype: "m.image",
-                body: text,
-                url: dataUri,
-            };
-        }
+
         // post the message into this new room
         const eventId = await this.sendMessage(data.room_id, content);
 

@@ -130,10 +130,10 @@ class TimelinePage extends React.Component {
                             Not much to see yet. Check {" "}
                             <a
                                 href={
-                                    "/@r4k:dendrite.matrix.org"
+                                    "/@library:dendrite.matrix.org"
                                 }
                             >
-                                r4-player cerulean matrix test
+                                matrix cerulean library test
                             </a>
                         </div>
                     );
@@ -144,24 +144,11 @@ class TimelinePage extends React.Component {
         let title;
         if (hasEntries) {
             title = <div className="timelineTitle">What's going on</div>;
-        }
-
-        let inputPost;
-        if (!this.props.client.isGuest) {
-            inputPost = (
-                <div className="inputPostTimeline">
-                    <InputPost
-                        client={this.props.client}
-                        onPost={this.onPost.bind(this)}
-                    />
-                </div>
-            );
-        }
+        }         
 
         let userPageBody = (
             <div>
-                <div className=" UserPageBody">
-                    {inputPost}
+                <div className="UserPageBody">
                     {title}
                     {timelineBlock}
                 </div>

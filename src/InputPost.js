@@ -10,8 +10,8 @@ class InputPost extends React.Component {
         super(props);
         this.state = {
             inputPost: "",
-	    inputTrackUrl:"",
-	    inputTrackTitle:"",
+	    inputMediaUrl:"",
+	    inputTitle:"",
             loading: false,
 	    
 	    /* not using */
@@ -55,8 +55,8 @@ class InputPost extends React.Component {
                 await this.props.client.postNewThread({
 		    text: this.state.inputPost,
                     dataUri: dataUri,
-		    trackTitle: this.state.inputTrackTitle,
-		    trackUrl: this.state.inputTrackUrl,
+		    title: this.state.inputTitle,
+		    mediaUrl: this.state.inputMediaUrl,
 		});
             }
             this.setState({ inputPost: "" });
@@ -98,46 +98,50 @@ class InputPost extends React.Component {
         }
         return (
             <div>
-                <div className="inputPostWithButton">
-		    <input
-                        name="inputTrackTitle"
-                        className="inputPost"
-                        type="text"
-                        placeholder="Track title"
-                        onKeyDown={this.handleKeyDown.bind(this)}
-                        onChange={this.handleInputChange.bind(this)}
-                        value={this.state.inputTrackTitle}
-                    ></input>              
+                <details>
+		    <summary>New post</summary>
+		    <div className="inputPostWithButton">
+           		<input
+			className="inputPost inputPostUploadButton"
+			type="file"
+			name="file"
+			accept="image/*"
+			onChange={this.onUploadFileClick.bind(this)}
+			/>
 
-		    <input
-                        name="inputTrackUrl"
-                        className="inputPost"
-                        type="text"
-                        placeholder="Track URL"
-			onKeyDown={this.handleKeyDown.bind(this)}
-                        onChange={this.handleInputChange.bind(this)}
-                        value={this.state.inputTrackUrl}
-                    ></input>
+			<textarea
+                            name="inputPost"
+                            className="inputPost"
+                            type="text"
+                            placeholder="Message"
+                            onKeyDown={this.handleKeyDown.bind(this)}
+                            onChange={this.handleInputChange.bind(this)}
+                            value={this.state.inputPost}
+			></textarea>
+			
+			<input
+                            name="inputMediaUrl"
+                            className="inputPost"
+                            type="text"
+                            placeholder="URL"
+			    onKeyDown={this.handleKeyDown.bind(this)}
+                            onChange={this.handleInputChange.bind(this)}
+                            value={this.state.inputMediaUrl}
+			></input>
 
-		    <textarea
-                        name="inputPost"
-                        className="inputPost"
-                        type="text"
-                        placeholder="Track body"
-                        onKeyDown={this.handleKeyDown.bind(this)}
-                        onChange={this.handleInputChange.bind(this)}
-                        value={this.state.inputPost}
-                    ></textarea>
-		    
-                    {this.postButton()}
-                </div>
-                {/* <input
-                    className="inputPostUploadButton"
-                    type="file"
-                    name="file"
-                    accept="image/*"
-                    onChange={this.onUploadFileClick.bind(this)}
-                    /> */}
+			<input
+                            name="inputTitle"
+                            className="inputPost"
+                            type="text"
+                            placeholder="Title"
+                            onKeyDown={this.handleKeyDown.bind(this)}
+                            onChange={this.handleInputChange.bind(this)}
+                            value={this.state.inputTitle}
+			></input>
+			
+			{this.postButton()}
+                    </div>
+		</details>
             </div>
         );
     }
