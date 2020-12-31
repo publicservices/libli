@@ -1,7 +1,6 @@
 import React from "react";
 import "./TimelinePage.css";
 import Message from "./Message";
-import InputPost from "./InputPost";
 import { createPermalinkForTimelineEvent } from "./routing";
 
 // TimelinePage renders an aggregated feed of all timelines the logged in user is following.
