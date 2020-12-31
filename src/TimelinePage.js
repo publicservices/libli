@@ -82,6 +82,7 @@ class TimelinePage extends React.Component {
         let timelineBlock;
         let errBlock;
         let hasEntries = false;
+
         if (this.state.error) {
             errBlock = (
                 <div className="errblock">

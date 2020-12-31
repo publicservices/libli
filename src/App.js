@@ -6,6 +6,7 @@ import StatusPage from "./StatusPage";
 import TimelinePage from "./TimelinePage";
 import ReputationPane from "./ReputationPane";
 import AppHeader from "./AppHeader";
+import AppFooter from "./AppFooter";
 import AppPlayer from "./AppPlayer";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
@@ -55,6 +56,9 @@ class App extends React.Component {
             return;
         }
         const userId = path[1];
+
+
+	
         if (!userId) {
             console.log("viewing timeline");
             this.state.page = "timeline";
@@ -296,6 +300,8 @@ class App extends React.Component {
             <main className="AppMain">
 	    {this.renderPage()}
 	    </main>
+
+	    <AppFooter/>
 	    
             {filterPane}
 

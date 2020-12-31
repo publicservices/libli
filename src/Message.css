@@ -10,14 +10,18 @@
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
+    flex-basis: 100%;
 }
 @media (min-width: 40rem) {
     .Message{
-	display: flex;
+	flex-basis: 50%;
+	padding: 1rem;
+    }
+}
+@media (min-width: 60rem) {
+    .Message{
 	flex-basis: 25%;
-	align-items: center;
-	justify-content: center;
-	padding: 0.5rem;
+	padding: 1rem;
     }
 }
 .MessageHeader{
@@ -28,6 +32,7 @@
     box-sizing: border-box;
 }
 .MessageBody{
+    padding: 0.7rem;
 }
 .MessageMedia{
     display: block;
@@ -56,7 +61,7 @@
 
     cursor: pointer;
     overflow: hidden;
-    text-overflow: ellipsis;
+    tex-toverflow: ellipsis;
     white-space: nowrap;
     box-sizing: border-box;
 }
@@ -84,8 +89,6 @@
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
-    font-size: 15px;
-    line-height: 24px;
     word-break: break-word;
 
     /* or 160% */

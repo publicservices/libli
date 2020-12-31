@@ -97,7 +97,7 @@ class InputPost extends React.Component {
             return <div className="loader">Loading...</div>;
         }
         return (
-            <div>
+            <div className="InputPost">
                 <details>
 		    <summary>New post</summary>
 		    <div className="inputPostWithButton">

@@ -9,8 +9,12 @@ html {
 /* variables */
 :root {
     --color-theme: green;
+    --color-text: black;
+    --color-text-light: white;
     --color-white: white;
+    --color-background-modal: whitesmoke;
 
+    --color-button-dark: gray;
     --size-container: 40rem;
 }
 
@@ -55,13 +59,21 @@ summary {
 }
 
 .AppHeader{
-    color: var(--color-white);
-    background: var(--color-theme);
+    /* color: var(--color-white); */
+    /* background: var(--color-theme); */
     display: flex;
     flex-direction: row;
     flex-grow: 0;
     justify-content: space-between;
     align-items: center;
+    padding: 0.5rem;
+}
+.AppFooter {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.AppFooter a {
     padding: 0.5rem;
 }
 
@@ -88,7 +100,6 @@ summary {
     line-height: 18px;
     text-align: center;
     letter-spacing: 0.08em;
-    color: #FFFFFF;
     margin-left: 8px;
 }
 
@@ -97,36 +108,33 @@ summary {
     align-items: center;
 }
 .titleAndLogo a {
-    color: white;
-    text-decoration: none;
     padding: 0.5rem;
     display: flex;
 }
 
-.lightButton {
-    background: #FFFFFF;
-    border-radius: 6px;
-    border: none;
-    font-family: Inter;
-    color: #2952BE;
+.titleAndLogo a,
+.titleAndLogo a:visited {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.Button {
+    background: transparent;
+    color: var(--color-text);
+    border-radius: 0.2rem;
     font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    padding: 4px 8px 4px 8px;
+    font-weight: normal;
+    padding: 0.2rem;
+}
+
+.lightButton {
+    border: none;
+
 }
 
 .darkButton {
-    background: #2952BE;
-    border-radius: 6px;
-    border: none;
-    font-family: Inter;
-    color: #FFFFFF;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    padding: 4px 8px 4px 8px;
+    background-color: var(--color-button-dark);
+    color: var(--color-text-light);
 }
 
 button:hover{
@@ -166,7 +174,6 @@ button:hover{
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
-    color: #2952BE;
     margin-bottom: 16px;
 }
 
@@ -181,13 +188,13 @@ button:hover{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #F7F7F7;
+    background: var(--color-background-modal);
     border-radius: 12px;
     z-index: 1010;
-    width: 640px;
-    max-width: 100%;
+    width: 95%;
+    max-width: 40rem;
     height: auto;
-    padding: 24px;
+    padding: 1.5rem;
 }
 
 .modal-overlay {
@@ -215,6 +222,7 @@ button:hover{
 }
 
 .filterButton{
+    display: none;
     margin-right: 20px;
     vertical-align: middle;
     cursor: pointer;

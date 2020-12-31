@@ -229,10 +229,18 @@ class Client {
                 headers: { Authorization: `Bearer ${this.accessToken}` },
             }
         );
+
         // filter only @# rooms then add in all timeline events
         const roomIds = Object.keys(syncData.rooms.join).filter((roomId) => {
+
+	    // bypass, do not filter for now
+	    if (false) {
+		return true
+	    }
+
             // try to find an #@ alias
             let foundAlias = false;
+
             for (let ev of syncData.rooms.join[roomId].state.events) {
                 if (ev.type === "m.room.aliases" && ev.content.aliases) {
                     for (let alias of ev.content.aliases) {
@@ -255,6 +263,7 @@ class Client {
                 events.push(ev);
             }
         }
+
         // sort by origin_server_ts
         info.timeline = events.sort((a, b) => {
             if (a.origin_server_ts === b.origin_server_ts) {

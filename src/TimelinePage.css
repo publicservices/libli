@@ -1,16 +1,5 @@
-.UserPageHeader{
-    padding-bottom: 15px;
-}
-
 .UserPage{
     margin-top: 16px;
-}
-
-.UserPageHeader{
-    background: #F7F7F7;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 10px;
 }
 
 .UserPageBody{

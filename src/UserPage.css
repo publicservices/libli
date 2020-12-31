@@ -3,26 +3,20 @@
     padding: 15px;
 }
 
-.UserPageHeader{
-    line-height: 18px;
-    padding-bottom: 15px;
-    font-family: Inter;
-}
-
 .UserPage{
-    margin-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
 }
 
 .UserPageHeader{
     max-width: var(--size-container);
-    width: 100%;
+    width: 90%;
     background: whitesmoke;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 10px;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    margin: 2rem;
 }
 
 .UserPageBody{
@@ -31,16 +25,10 @@
 }
 
 .displayName{
-    /* Body SemiBold */
     font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 18px;
+    font-weight: bold;
 
-    /* Light / Primary content */
-    color: #17191C;
-
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -95,14 +83,12 @@
 }
 
 .userAvatar{
-    margin-right: 1em;
-    max-width: 64px;
-    max-height: 64px;
+    margin-right: 1rem;
+    max-width: 2rem;
+    max-height: 2rem;
 }
 
 .userSection {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
 }
-
