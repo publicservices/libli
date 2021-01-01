@@ -16,33 +16,37 @@ export default ({
     return (
 	<header className="AppHeader">
 
-	    <div className="titleAndLogo">
-		<div className="title">
-		    <a href="/">Library</a>
+	    <div className="AppHeaderItem">
+		<div className="titleAndLogo">
+		    <div className="title">
+			<a href="/">Library</a>
+		    </div>
 		</div>
-            </div>
+	    </div>
 
-	    <LoginLogoutButton
+
+	    <aside className="AppHeaderItem">
+		{ !isGuest && (
+		      <NewPostButton
+			  onNewPostClick={onNewPostClick}
+		      ></NewPostButton>
+		) }
+		
+		{ !isGuest && (
+		      <CurrentUser
+			  client={client}
+			  onUserClick={onUserClick}
+		      ></CurrentUser>
+		  )}
+
+		<LoginLogoutButton
 		client={client}
 		onLogoutClick={onLogoutClick}
 		onRegisterClick={onRegisterClick}
 		onLoginClick={onLoginClick}
 		onFilterClick={onFilterClick}
-	    />
-
-	    { !isGuest && (
-		  <CurrentUser
-		      client={client}
-		      onUserClick={onUserClick}
-		  ></CurrentUser>
-	      )}
-
-
-	    { !isGuest && (
-		  <NewPostButton
-		      onNewPostClick={onNewPostClick}
-		  ></NewPostButton>
-	    ) }
+		/>
+	    </aside>
 	</header>
     )
 }
