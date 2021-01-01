@@ -10,6 +10,7 @@ import AppFooter from "./AppFooter";
 import AppPlayer from "./AppPlayer";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
+import NewPostModal from "./NewPostModal";
 
 const constDendriteServer = "https://dendrite.matrix.org";
 
@@ -40,6 +41,7 @@ class App extends React.Component {
             statusId: null,
             showLoginModal: false,
             showRegisterModal: false,
+	    showNewPostModal: false,
             showFilterPane: false,
             inputLoginUrl: constDendriteServer,
             inputLoginUsername: "",
@@ -125,20 +127,32 @@ class App extends React.Component {
     }
 
     onLoginClose() {
-        this.setState({ showLoginModal: false, error: null });
+        this.setState({
+	    inputLoginUsername: "",
+            inputLoginPassword: "",
+	    showLoginModal: false,
+	    error: null
+	});
     }
 
     onRegisterClose() {
-        this.setState({ showRegisterModal: false, error: null });
+        this.setState({
+	    inputLoginUsername: "",
+            inputLoginPassword: "",
+	    showRegisterModal: false,
+	    error: null
+	});
+    }
+
+    onNewPostClose() {
+        this.setState({ showNewPostModal: false, error: null });
     }
 
     onLoginClick(ev) {
         this.setState({
             showLoginModal: true,
             showRegisterModal: false,
-            inputLoginUrl: constDendriteServer,
-            inputLoginUsername: "",
-            inputLoginPassword: "",
+            inputLoginUrl: constDendriteServer
         });
     }
 
@@ -146,9 +160,15 @@ class App extends React.Component {
         this.setState({
             showLoginModal: false,
             showRegisterModal: true,
-            inputLoginUrl: constDendriteServer,
-            inputLoginUsername: "",
-            inputLoginPassword: "",
+            inputLoginUrl: constDendriteServer
+        });
+    }
+
+    onNewPostClick(ev) {
+        this.setState({
+            showLoginModal: false,
+            showRegisterModal: false,
+	    showNewPostModal: true
         });
     }
 
@@ -288,10 +308,11 @@ class App extends React.Component {
 	    
 	    <AppHeader
 	    client={this.props.client}
-	    onLogoutClick={this.onLogoutClick.bind(this)}
 	    onRegisterClick={this.onRegisterClick.bind(this)}
 	    onLoginClick={this.onLoginClick.bind(this)}
+	    onLogoutClick={this.onLogoutClick.bind(this)}
 	    onUserClick={this.onUserClick.bind(this)}
+	    onNewPostClick={this.onNewPostClick.bind(this)}
 	    onFilterClick={this.onFilterClick.bind(this)}
 	    ></AppHeader>
 	    
@@ -328,6 +349,13 @@ class App extends React.Component {
 		onSubmitRegister={this.onSubmitRegister.bind(this)}
 		onRegisterClose={this.onRegisterClose.bind(this)}
 	    ></RegisterModal>
+
+	    <NewPostModal
+		error={this.state.error}
+		client={this.props.client}
+		showNewPostModal={this.state.showNewPostModal}
+		onNewPostClose={this.onNewPostClose.bind(this)}
+	    ></NewPostModal>
 	    
             </div>
         )

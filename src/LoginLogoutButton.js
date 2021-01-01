@@ -37,15 +37,6 @@ const LoginLogoutButton = ({
 		    Login
                 </button>
 	    );
-        } else {
-	    myUser = (
-                <div
-		    className="loggedInUser"
-		    onClick={onUserClick}
-                >
-		    {client.userId}
-                </div>
-	    );
         }
 
         return (

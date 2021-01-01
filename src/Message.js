@@ -178,33 +178,7 @@ class Message extends React.Component {
         if (!event) {
             return <div></div>;
         }
-        let blurStyle = {};
-        let hiddenTooltip;
         let handler = this.onMessageClick.bind(this);
-        if (this.state.hidden) {
-            // 0 -> -10 = 1px blur
-            // -10 -> -20 = 2px blur
-            // -20 -> -30 = 3px blur, etc
-            let blur = 5;
-            // it should be
-            if (this.state.reputationScore < 0) {
-                // make score positive, look at 10s and add 1.
-                // we expect -100 to be the highest value, resulting in:
-                //   -100 * -1 = 100
-                //   100 / 10 = 10
-                //    10 + 1 = 11px blur
-                blur = Math.round((this.state.reputationScore * -1) / 10) + 1;
-                if (blur > 11) {
-                    blur = 11;
-                }
-            }
-            blurStyle = {
-                filter: "blur(" + blur + "px)",
-                opacity: 0.8,
-            };
-            handler = this.onUnhideClick.bind(this);
-            hiddenTooltip = "Reveal filtered message";
-        }
 
         let image;
         if (event.content.url) {
@@ -212,15 +186,22 @@ class Message extends React.Component {
                 <picture className="MessageMedia">
 		    <img
 			alt="user upload"
-			style={blurStyle}
 			className="userImage"
-			title={hiddenTooltip}
 			onClick={handler}
 			src={this.context.client.downloadLink(event.content.url)}
+		    	loading="lazy"
                     />
 		</picture>
             );
         }
+
+	let mediaUrl;
+        if (event.content.mediaUrl) {
+            mediaUrl = (
+		<a href={event.content.mediaUrl}>{event.content.mediaUrl}</a>
+            );
+        }
+	
         return (
             <div className="MessageContent">
                 {image}
@@ -233,13 +214,13 @@ class Message extends React.Component {
                     </div>
                     <div
 			className="MessageText"
-			style={blurStyle}
-			title={hiddenTooltip}
 			onClick={this.handleMessageClick.bind(this)}
                     >
 			{"" + event.content.body}
                     </div>
 		</div>
+
+		{mediaUrl}
 	    </div>
         );
     }

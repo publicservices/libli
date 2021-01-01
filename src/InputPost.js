@@ -13,6 +13,7 @@ class InputPost extends React.Component {
 	    inputMediaUrl:"",
 	    inputTitle:"",
             loading: false,
+	    open: props.open,
 	    
 	    /* not using */
             uploadFile: null,
@@ -98,7 +99,7 @@ class InputPost extends React.Component {
         }
         return (
             <div className="InputPost">
-                <details>
+                <details open={this.state.open}>
 		    <summary>New post</summary>
 		    <div className="inputPostWithButton">
            		<input

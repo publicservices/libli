@@ -18,7 +18,6 @@ class UserPage extends React.Component {
             error: null,
             withReplies: this.props.withReplies,
             timeline: [],
-            isMe: props.userId === props.client.userId,
             roomId: null,
             userProfile: null,
         };
@@ -160,65 +159,46 @@ class UserPage extends React.Component {
 
     render() {
         let timelineBlock;
-        let errBlock;
-        if (this.state.error) {
-            errBlock = (
-                <div className="errblock">
-                    Whoops! Something went wrong: {this.state.error}
+        if (this.state.loading) {
+                timelineBlock = <div className="loader">Loading posts...</div>;
+        } else {
+            let hasEntries = false;
+            timelineBlock = (
+                <div className="Messages">
+                    {this.getPosts().map((ev) => {
+                        hasEntries = true;
+                        return (
+                            <Message
+                                key={ev.event_id}
+                                event={ev}
+                                isTimelineEvent={true}
+                                onPost={this.onReplied.bind(this)}
+				onClick={this.onMessageClick.bind(this)}
+                            />
+                        );
+                    })}
                 </div>
             );
-        } else {
-            if (this.state.loading) {
-                timelineBlock = <div className="loader">Loading posts...</div>;
-            } else {
-                let hasEntries = false;
-                timelineBlock = (
-                    <div className="Messages">
-                        {this.getPosts().map((ev) => {
-                            hasEntries = true;
-                            return (
-                                <Message
-                                    key={ev.event_id}
-                                    event={ev}
-                                    isTimelineEvent={true}
-                                    onPost={this.onReplied.bind(this)}
-				    onClick={this.onMessageClick.bind(this)}
-                                />
-                            );
-                        })}
-                    </div>
-                );
-                if (!hasEntries) {
-                    // the default page is / which is TimelinePage which then directs them to
-                    // their UserPage if there are no events, so we want to suggest some content
-                    let emptyListText;
-                    if (this.state.isMe) {
-                        emptyListText = (
-                            <span>
-                                No posts yet.
-                            </span>
-                        );
-                    } else {
-                        emptyListText = (
-                            <span>This user hasn't posted anything yet.</span>
-                        );
-                    }
-
-                    timelineBlock = (
-                        <div className="emptyList">{emptyListText}</div>
+            if (!hasEntries) {
+                // the default page is / which is TimelinePage which then directs them to
+                // their UserPage if there are no events, so we want to suggest some content
+                let emptyListText;
+                if (this.state.isMe) {
+                    emptyListText = (
+                        <span>
+                            No posts yet.
+                        </span>
+                    );
+                } else {
+                    emptyListText = (
+                        <span>This user hasn't posted anything yet.</span>
                     );
                 }
-            }
-        }
 
-        let inputMessage;
-        if (this.state.isMe && !this.props.client.isGuest) {
-            inputMessage = (
-                <InputPost
-                    client={this.props.client}
-                    onPost={this.loadEvents.bind(this)}
-                />
-            );
+                timelineBlock = (
+                    <div className="emptyList">{emptyListText}</div>
+                );
+            }
         }
 
         let userPageHeader = (
@@ -240,8 +220,6 @@ class UserPage extends React.Component {
                             <div className="userName">{this.props.userId}</div>
                         </div>
                     </div>
-                    {inputMessage}
-                    {errBlock}
                 </div>
             );
 
