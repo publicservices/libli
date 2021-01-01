@@ -1,11 +1,9 @@
 import React from "react";
 import "./UserPage.css";
 import Message from "./Message";
-import InputPost from "./InputPost";
 import { createPermalinkForTimelineEvent } from "./routing";
 
-// UserPage renders an arbitrary user's timeline room. If the user is the logged-in user
-// then an input box is also displayed.
+// UserPage renders an arbitrary user's timeline room. 
 // Props:
 //  - userId: The user's timeline room to view.
 //  - withReplies: True to show replies in addition to posts.

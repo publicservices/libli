@@ -25,7 +25,7 @@ export default ({
 		onPost={onPost}
 		open={true}
             />
-
+	    {errMsg}
         </Modal>
     )
 }
