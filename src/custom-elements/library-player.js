@@ -12,7 +12,6 @@ class LibraryPlayer extends HTMLElement {
 	});
     }
     updatePlaylist(playlist) {
-	console.log('update playlist', playlist)
 	this.closed = false
 	this.removeAttribute('closed')
 	this.playlist = playlist
@@ -20,7 +19,6 @@ class LibraryPlayer extends HTMLElement {
     }
 
     removeFullscreen() {
-	console.log('remove', this)
 	this.fullscreen = false
 	this.removeAttribute('full-screen')
 	document.fullscreenElement && document.exitFullscreen()

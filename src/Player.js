@@ -9,10 +9,8 @@ class Player {
 	this.serverUrl = serverUrl
     }
     play({event, events, source}) {
-	console.log(event, events, source)
 	const $player = document.querySelector('library-player')
 	const playlist = this.buildPlaylist({events, source})
-	console.log('player', $player)
 	$player.updatePlaylist(playlist)
     }
 
@@ -38,7 +36,6 @@ class Player {
     }
     
     serializeEvents(events) {
-	console.log('events', events)
 	return events.map(event => {
 	    return {
 		id: event.event_id,
