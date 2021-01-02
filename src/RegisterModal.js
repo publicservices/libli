@@ -23,12 +23,15 @@ export default ({
             show={showRegisterModal}
             handleClose={onRegisterClose}
         >
-            <span className="modalSignIn">Register a new account</span>
-            <form onSubmit={onSubmitRegister}>
-                <div>
+            <header className="ModalHeader">
+		<h2 className="ModalTitle">Register a new account</h2>
+	    </header>
+
+	    <form onSubmit={onSubmitRegister} className="Form">
+                <div className="FormItem">
                     <input
                         name="inputLoginUrl"
-                        className="inputLogin"
+                        className="Input"
                         type="text"
                         placeholder="Dendrite Homeserver URL e.g https://dendrite.matrix.org"
                         onChange={handleInputChange}
@@ -36,10 +39,10 @@ export default ({
                         value={inputLoginUrl}
                     ></input>
                 </div>
-                <div>
+                <div className="FormItem">
                     <input
                         name="inputLoginUsername"
-                        className="inputLogin"
+                        className="Input"
                         type="text"
                         placeholder="Username e.g alice"
                         onChange={handleInputChange}
@@ -47,10 +50,10 @@ export default ({
                         value={inputLoginUsername}
                     ></input>
                 </div>
-                <div>
+                <div className="FormItem">
                     <input
                         name="inputLoginPassword"
-                        className="inputLogin"
+                        className="Input"
                         type="password"
                         placeholder="Password"
                         onChange={handleInputChange}
@@ -59,10 +62,10 @@ export default ({
                     ></input>
                 </div>
                 {errMsg}
-                <div>
+                <div className="FormItem FormItemSubmit">
                     <input
                         type="button"
-                        className="darkButton modalSignInButton"
+                        className="button darkButton"
                         onClick={onSubmitRegister}
                         value="Register"
                     ></input>

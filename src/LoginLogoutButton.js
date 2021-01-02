@@ -12,8 +12,9 @@ const LoginLogoutButton = ({
     if (client.accessToken) {
         let logoutButton = (
 	    <button
-                className=" headerButton lightButton"
+                className="button headerButton"
                 onClick={onLogoutClick}
+		title="Log out of the application, disconnect user"
 	    >
                 Logout
 	    </button>
@@ -23,16 +24,18 @@ const LoginLogoutButton = ({
         if (client.isGuest) {
 	    logoutButton = (
                 <button
-		    className="lightButton headerButton"
+		    className="button headerButton"
 		    onClick={onRegisterClick}
+		    title="Register a new user to start posting and interacting with other users (select a Matrix server to host your account)"
                 >
 		    Register
                 </button>
 	    );
 	    loginButton = (
                 <button
-		    className="lightButton headerButton spacer"
+		    className="button headerButton"
 		    onClick={onLoginClick}
+		    title="Log in the application with an existing user account"
                 >
 		    Login
                 </button>
@@ -40,35 +43,35 @@ const LoginLogoutButton = ({
         }
 
         return (
-	    <div className="topRightNav">
+	    <>
                 {myUser}
                 <img
 		src="/filter.svg"
 		alt="filter"
-		className="filterButton"
+		className="button filterButton"
 		onClick={onFilterClick}
                 />
                 {logoutButton}
                 {loginButton}
-	    </div>
+	    </>
         );
     }
     
     return (
-        <div>
+        <>
 	    <button
-                className=" lightButton topRightNav"
+                className="button"
                 onClick={onRegisterClick}
 	    >
                 Register
 	    </button>
 	    <button
-                className=" lightButton topRightNav"
+                className="button"
                 onClick={onLoginClick}
 	    >
                 Login
 	    </button>
-        </div>
+        </>
     );
 };
 

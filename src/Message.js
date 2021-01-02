@@ -198,7 +198,11 @@ class Message extends React.Component {
 	let mediaUrl;
         if (event.content.mediaUrl) {
             mediaUrl = (
-		<a href={event.content.mediaUrl}>{event.content.mediaUrl}</a>
+		<a
+		    className="MessageMediaUrl"
+		    href={event.content.mediaUrl}>
+		    {event.content.mediaUrl}
+		</a>
             );
         }
 	

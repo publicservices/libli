@@ -13,7 +13,6 @@ class InputPost extends React.Component {
 	    inputMediaUrl:"",
 	    inputTitle:"",
             loading: false,
-	    open: props.open,
 	    
 	    /* not using */
             uploadFile: null,
@@ -99,50 +98,56 @@ class InputPost extends React.Component {
         }
         return (
             <div className="InputPost">
-                <details open={this.state.open}>
-		    <summary>New post</summary>
-		    <div className="inputPostWithButton">
-           		<input
-			className="inputPost inputPostUploadButton"
+		<form className="Form">
+		    <label className="FormItem FormItemHorizontal">
+			<span className="FormItemTitle">Media (file)</span>
+			<input
+			className="Input InputFile"
 			type="file"
 			name="file"
 			accept="image/*"
 			onChange={this.onUploadFileClick.bind(this)}
 			/>
-
+		    </label>
+		    <div className="FormItem">
 			<textarea
-                            name="inputPost"
-                            className="inputPost"
-                            type="text"
-                            placeholder="Message"
-                            onKeyDown={this.handleKeyDown.bind(this)}
-                            onChange={this.handleInputChange.bind(this)}
-                            value={this.state.inputPost}
-			></textarea>
-			
-			<input
-                            name="inputMediaUrl"
-                            className="inputPost"
-                            type="text"
-                            placeholder="URL"
+			    name="inputPost"
+			    className="Textarea"
+			    type="text"
+			    placeholder="Message"
 			    onKeyDown={this.handleKeyDown.bind(this)}
-                            onChange={this.handleInputChange.bind(this)}
-                            value={this.state.inputMediaUrl}
-			></input>
-
+			    onChange={this.handleInputChange.bind(this)}
+			    value={this.state.inputPost}
+			></textarea>
+		    </div>
+		    
+		    <div className="FormItem">
 			<input
-                            name="inputTitle"
-                            className="inputPost"
-                            type="text"
-                            placeholder="Title"
-                            onKeyDown={this.handleKeyDown.bind(this)}
-                            onChange={this.handleInputChange.bind(this)}
-                            value={this.state.inputTitle}
+			    name="inputMediaUrl"
+			    className="Input"
+			    type="text"
+			    placeholder="URL"
+			    onKeyDown={this.handleKeyDown.bind(this)}
+			    onChange={this.handleInputChange.bind(this)}
+			    value={this.state.inputMediaUrl}
 			></input>
-			
+		    </div>
+
+		    <div className="FormItem">
+			<input
+			    name="inputTitle"
+			    className="Input"
+			    type="text"
+			    placeholder="Title"
+			    onKeyDown={this.handleKeyDown.bind(this)}
+			    onChange={this.handleInputChange.bind(this)}
+			    value={this.state.inputTitle}
+			></input>
+		    </div>
+		    <div className="FormItem FormItemSubmit">
 			{this.postButton()}
-                    </div>
-		</details>
+		    </div>
+		</form>
             </div>
         );
     }

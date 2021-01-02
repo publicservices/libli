@@ -20,12 +20,19 @@ export default ({
             show={showNewPostModal}
             handleClose={onNewPostClose}
         >
+	    <header className="ModalHeader">
+		<h2 className="ModalTitle">New post</h2>
+	    </header>
+
 	    <InputPost
-		client={client}
-		onPost={onPost}
-		open={true}
+	    client={client}
+	    onPost={onPost}
+	    open={true}
             />
-	    {errMsg}
+	    
+	    <footer className="ModalFooter">
+		{errMsg}
+	    </footer>
         </Modal>
     )
 }

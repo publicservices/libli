@@ -15,7 +15,7 @@ export default ({
 
     let errMsg;
     if (error) {
-        errMsg = <div className="errblock">{error}</div>;
+        errMsg = <div className="FormItem errblock">{error}</div>;
     }
     
     return (
@@ -23,12 +23,15 @@ export default ({
             show={showLoginModal}
             handleClose={onLoginClose}
         >
-            <span className="modalSignIn">Sign in</span>
-            <form onSubmit={onSubmitLogin}>
-		<div>
+            <header className="ModalHeader">
+		<h2 className="ModalTitle">Sign in</h2>
+	    </header>
+
+	    <form onSubmit={onSubmitLogin} className="Form">
+		<div className="FormItem">
 		    <input
 			name="inputLoginUrl"
-			className="inputLogin"
+			className="Input"
 			type="text"
 			placeholder="Homeserver URL e.g https://matrix.org"
 			onChange={handleInputChange}
@@ -36,10 +39,10 @@ export default ({
 			value={inputLoginUrl}
 		    ></input>
 		</div>
-		<div>
+		<div className="FormItem">
                     <input
 			name="inputLoginUsername"
-			className="inputLogin"
+			className="Input"
 			type="text"
 			placeholder="Username e.g alice"
 			onChange={handleInputChange}
@@ -47,10 +50,10 @@ export default ({
 			value={inputLoginUsername}
                     ></input>
 		</div>
-		<div>
+		<div className="FormItem">
                     <input
 			name="inputLoginPassword"
-			className="inputLogin"
+			className="Input"
 			type="password"
 			placeholder="Password"
 			onChange={handleInputChange}
@@ -59,15 +62,22 @@ export default ({
                     ></input>
 		</div>
 		{errMsg}
-		<div>
+
+		<div className="FormItem FormItemSubmit">
                     <input
 			type="button"
-			className="darkButton modalSignInButton"
+			className="button darkButton"
 			onClick={onSubmitLogin}
 			value="Login"
                     ></input>
 		</div>
             </form>
+
+	    <footer className="ModalFooter">
+		<p>
+		    Also try login on <a href="https://app.element.io">element.io</a>, with the same user, to see what is happening with your data.
+		</p>
+	    </footer>
         </Modal>
     )
 }

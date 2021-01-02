@@ -11,6 +11,7 @@ html {
     --color-theme: green;
     --color-text: black;
     --color-text-light: white;
+    --color-text-placeholder: darkgray;
     --color-white: white;
     --color-background-modal: whitesmoke;
 
@@ -45,11 +46,9 @@ body {
 picture {
     display: block;
 }
-details {
-    
+details {    
 }
 summary {
-    margin-bottom: 0.5rem;
     cursor: pointer;
 }
 
@@ -69,6 +68,8 @@ summary {
 }
 .AppHeaderItem {
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .AppHeaderItem {
     margin: 0.5rem;
@@ -113,20 +114,22 @@ summary {
     color: var(--color-text);
 }
 
-.Button {
-    background: transparent;
+.button {
     color: var(--color-text);
     border-radius: 0.2rem;
     font-style: normal;
     font-weight: normal;
+    padding: 0.4rem 0.9rem;
+    transition: background-color 200ms ease-in-out;
+    border: 1px solid transparent;
+}
+.smallButton {
     padding: 0.2rem;
 }
 
 .lightButton {
-    border: none;
-
+    background-color: transparent;
 }
-
 .darkButton {
     background-color: var(--color-button-dark);
     color: var(--color-text-light);
@@ -137,40 +140,21 @@ button:hover{
 }
 
 .loggedInUser{
-    margin-right: 16px;
+    margin-right: 1rem;
     cursor: pointer;
-    vertical-align: middle;
-    display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    max-width: 2rem;
+    transition: max-width 500ms ease-in-out;
+}
+@media (min-width: 40rem) {
+    .loggedInUser{
+	max-width: 100%;
+	font-size: 0.8rem;
+    }   
 }
 
-.inputLogin{
-    background: #FFFFFF;
-    border: 0px;
-    border-radius: 200px;
-    padding-left: 16px;
-    width: 100%;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    height: 36px;
-}
-.inputLogin:focus {
-    outline: none;
-}
-
-.modalSignIn{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 18px;
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-bottom: 16px;
-}
 
 .modalSignInButton{
     margin-top: 20px;
@@ -192,6 +176,13 @@ button:hover{
     align-items: center;
 }
 
+.ModalHeader{
+    margin-bottom: 1.5rem;
+}
+.ModalTitle {
+    font-size: 1rem;
+}
+
 .Modal--isVisible {
     display: flex;
 }
@@ -210,7 +201,7 @@ button:hover{
 }
 .ModalMain{
     background-color: var(--color-background-modal);
-    padding: 1rem;
+    padding: 1.5rem;
     width: 100%;
     max-width: 40rem;
 }
@@ -244,4 +235,58 @@ button:hover{
 }
 .Player radio4000-player {
     height: 100%;
+}
+
+
+/* form */
+.Form {
+    display: flex;
+    flex-direction: column;
+}
+.FormItem {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.FormItemSubmit {
+    align-items: flex-end;
+}
+.FormItemHorizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.FormItemHorizontal .FormItemTitle {
+    margin-right: 1rem;
+}
+.FormItemTitle {    
+    color: var(--color-text-placeholder);
+    padding: 0.5rem;
+}
+.Input,
+.Textarea {
+    color: var(--color-text);
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border: 1px solid transparent;
+}
+
+.Input::placeholder,
+.Textarea::placeholder {
+    opacity: 1;
+    color: var(--color-text-placeholder);
+}
+
+.Input {
+    flex-grow: 1;
+}
+.InputFile {
+    font-style: italic;
+    font-size: 0.8rem;
+}
+.Textarea {
+    min-width: 100%;
+    max-width: 100%;
 }

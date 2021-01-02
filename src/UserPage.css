@@ -36,19 +36,15 @@
 }
 
 .userName{
-    /* Body SemiBold */
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-
-    /* Light / Primary content */
-    color: #17191C;
-
-    margin-bottom: 8px;
-
+    max-width: 60vw;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+@media (min-width: 40rem) {
+    .userName {
+	max-width: none;
+    }
 }
 
 .tabGroup{

@@ -3,7 +3,7 @@ import React from "react"
 export default ({onNewPostClick}) => {
     return (
 	<button
-	    className="lightButton headerButton"
+	    className="button headerButton"
 	    onClick={onNewPostClick}
         >
 	    New post
