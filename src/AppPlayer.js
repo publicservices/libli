@@ -1,6 +1,8 @@
 import React from "react"
 
-export default ({isPlaying}) => {
+export default ({
+    isPlaying
+}) => {
     let playerClasses
     if (isPlaying) {
 	playerClasses = 'Player Player--isPlaying'
@@ -10,7 +12,7 @@ export default ({isPlaying}) => {
 
     /* html custom-element, webcomponent external to react */
     return (
-	<aside className={ `${playerClasses}` }>
+	<aside className={playerClasses}>
 	    <library-player></library-player>
 	</aside>
     )

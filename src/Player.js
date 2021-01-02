@@ -2,12 +2,12 @@
 // in the context of the matrix platform
 // https://github.com/internet4000/radio4000-player
 class Player {
-    constructor(storage) {
-        if (!storage) {
-            return;
-        }
+    constructor(serverUrl) {
+	if (!serverUrl) {
+	    return
+	}
+	this.serverUrl = serverUrl
     }
-
     play({event, events, source}) {
 	console.log(event, events, source)
 	const $player = document.querySelector('library-player')
@@ -25,12 +25,25 @@ class Player {
 	}
 	return playlist
     }
+
+    downloadLink(mxcUri) {
+        if (!mxcUri) {
+            return;
+        }
+        if (mxcUri.indexOf("mxc://") !== 0) {
+            return;
+        }
+        const mediaUrl = this.serverUrl.slice(0, -1 * "/client".length);
+        return mediaUrl + "/media/r0/download/" + mxcUri.split("mxc://")[1];
+    }
+    
     serializeEvents(events) {
+	console.log('events', events)
 	return events.map(event => {
 	    return {
 		id: event.event_id,
 		text: event.text,
-		dataUri: event.url,
+		dataUri: this.downloadLink(event.content.url),
 		title: event.content.title,
 		mediaUrl: event.content.mediaUrl,
 	    }

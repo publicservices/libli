@@ -305,58 +305,59 @@ class App extends React.Component {
 	
         return (
             <div className="App">
-	    
-	    <AppHeader
-	    client={this.props.client}
-	    onRegisterClick={this.onRegisterClick.bind(this)}
-	    onLoginClick={this.onLoginClick.bind(this)}
-	    onLogoutClick={this.onLogoutClick.bind(this)}
-	    onUserClick={this.onUserClick.bind(this)}
-	    onNewPostClick={this.onNewPostClick.bind(this)}
-	    onFilterClick={this.onFilterClick.bind(this)}
-	    ></AppHeader>
-	    
-	    <AppPlayer isPlaying={this.state.isPlaying}></AppPlayer>
-	    
-            <main className="AppMain">
-	    {this.renderPage()}
-	    </main>
+		
+		<AppHeader
+		    client={this.props.client}
+		    onRegisterClick={this.onRegisterClick.bind(this)}
+		    onLoginClick={this.onLoginClick.bind(this)}
+		    onLogoutClick={this.onLogoutClick.bind(this)}
+		    onUserClick={this.onUserClick.bind(this)}
+		    onNewPostClick={this.onNewPostClick.bind(this)}
+		    onFilterClick={this.onFilterClick.bind(this)}
+		></AppHeader>
 
-	    <AppFooter/>
-	    
-            {filterPane}
+		<AppPlayer
+		    isPlaying={this.state.isPlaying}
+		/>
+		<main className="AppMain">
+		    {this.renderPage()}
+		</main>
 
-            <LoginModal
-		error={this.state.error}
-		showLoginModal={this.state.showLoginModal}
-		inputLoginUrl={this.state.inputLoginUrl}
-		inputLoginUsername={this.state.inputLoginUsername}
-		inputLoginPassword={this.state.inputLoginPassword}
-		handleInputChange={this.handleInputChange.bind(this)}
-		onKeyDown={this.onKeyDown.bind(this, "login")}
-		onSubmitLogin={this.onSubmitLogin.bind(this)}
-		onLoginClose={this.onLoginClose.bind(this)}
-	    ></LoginModal>
+		<AppFooter/>
+		
+		{filterPane}
 
-	    <RegisterModal
-		error={this.state.error}
-		showRegisterModal={this.state.showRegisterModal}
-		inputLoginUrl={this.state.inputLoginUrl}
-		inputLoginUsername={this.state.inputLoginUsername}
-		inputLoginPassword={this.state.inputLoginPassword}
-		handleInputChange={this.handleInputChange.bind(this)}
-		onKeyDown={this.onKeyDown.bind(this, "register")}
-		onSubmitRegister={this.onSubmitRegister.bind(this)}
-		onRegisterClose={this.onRegisterClose.bind(this)}
-	    ></RegisterModal>
+		<LoginModal
+		    error={this.state.error}
+		    showLoginModal={this.state.showLoginModal}
+		    inputLoginUrl={this.state.inputLoginUrl}
+		    inputLoginUsername={this.state.inputLoginUsername}
+		    inputLoginPassword={this.state.inputLoginPassword}
+		    handleInputChange={this.handleInputChange.bind(this)}
+		    onKeyDown={this.onKeyDown.bind(this, "login")}
+		    onSubmitLogin={this.onSubmitLogin.bind(this)}
+		    onLoginClose={this.onLoginClose.bind(this)}
+		></LoginModal>
 
-	    <NewPostModal
-		error={this.state.error}
-		client={this.props.client}
-		showNewPostModal={this.state.showNewPostModal}
-		onNewPostClose={this.onNewPostClose.bind(this)}
-	    ></NewPostModal>
-	    
+		<RegisterModal
+		    error={this.state.error}
+		    showRegisterModal={this.state.showRegisterModal}
+		    inputLoginUrl={this.state.inputLoginUrl}
+		    inputLoginUsername={this.state.inputLoginUsername}
+		    inputLoginPassword={this.state.inputLoginPassword}
+		    handleInputChange={this.handleInputChange.bind(this)}
+		    onKeyDown={this.onKeyDown.bind(this, "register")}
+		    onSubmitRegister={this.onSubmitRegister.bind(this)}
+		    onRegisterClose={this.onRegisterClose.bind(this)}
+		></RegisterModal>
+
+		<NewPostModal
+		    error={this.state.error}
+		    client={this.props.client}
+		    showNewPostModal={this.state.showNewPostModal}
+		    onNewPostClose={this.onNewPostClose.bind(this)}
+		></NewPostModal>
+		
             </div>
         )
     }

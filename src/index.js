@@ -3,10 +3,12 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import Reputation from "./Reputation";
 import { ClientContext, client } from "./ClientContext";
-import { PlayerContext, player } from "./PlayerContext";
+import { PlayerContext, Player } from "./PlayerContext";
 
 const reputation = new Reputation();
 reputation.loadWeights(window.localStorage, client);
+
+const player = new Player(client.serverUrl)
 
 ReactDOM.render(
     <React.StrictMode>

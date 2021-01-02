@@ -101,6 +101,12 @@ summary {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+@media (min-width: 60rem) {
+    .AppMain {
+	flex-direction: row;
+    }
 }
 
 .topRightNav{
@@ -251,11 +257,19 @@ button:hover{
     user-select: none;
     transition: max-height 200ms ease-in-out, opacity 200ms ease-in-out,;
     z-index: -1;
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 40rem) {
+    .Player {
+	
+    }
 }
 .Player--isPlaying {
     z-index: 1;
     position: sticky;
-    top: 0;
+    top: 0rem;
     max-height: 100%;
     opacity: 1;
 }
@@ -327,14 +341,18 @@ button:hover{
 
 /* player */
 library-player {
-    padding: 2rem;
+    padding: 0.5rem;
     display: flex;
+    flex-direction: column;
     background-color: var(--color-background-modal);
     border: 0.1rem solid transparent;
     margin: 0.3rem;
     transition: border-color 200ms ease-in-out;
-    max-height: 30vh;
     max-width: 95vw;
+}
+
+library-player[full-screen="true"] {
+    padding: 0;
 }
 
 player-view {
@@ -344,4 +362,33 @@ player-view {
 
 library-player:hover {
     border-color: var(--color-text);
+}
+
+library-player[closed="true"] {
+    display: none;
+}
+
+player-view img {
+    max-height: 30vh;
+    padding: 2rem;
+}
+library-player[full-screen="true"] player-view img {
+    max-height: 95vh;
+    max-width: 95vh;
+}
+
+player-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+}
+
+player-slide  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+library-player[full-screen="true"] player-slide {
+    min-width: 90vw;
 }
