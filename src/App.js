@@ -316,12 +316,14 @@ class App extends React.Component {
 		    onFilterClick={this.onFilterClick.bind(this)}
 		></AppHeader>
 
-		<AppPlayer
-		    isPlaying={this.state.isPlaying}
-		/>
-		<main className="AppMain">
-		    {this.renderPage()}
-		</main>
+		<div className="AppPanel">
+		    <AppPlayer
+			isPlaying={this.state.isPlaying}
+		    />
+		    <main className="AppMain">
+			{this.renderPage()}
+		    </main>
+		</div>
 
 		<AppFooter/>
 		
