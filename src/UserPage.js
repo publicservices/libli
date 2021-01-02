@@ -119,7 +119,7 @@ class UserPage extends React.Component {
         window.location.href = link;
     }
 
-    getPosts() {
+    getMessages() {
 	return this.state.timeline
             .filter((ev) => {
                 // only messages sent by this user
@@ -147,11 +147,11 @@ class UserPage extends React.Component {
             })
     }
     onMessageClick(message) {
-	const tracks = this.getPosts()
+	const messages = this.getMessages()
         this.props.onPlay({
-	    track: message,
-	    tracks,
-	    channel: this.state.userProfile
+	    event: message,
+	    events: messages,
+	    source: this.state.userProfile
 	})
     }
 
@@ -163,7 +163,7 @@ class UserPage extends React.Component {
             let hasEntries = false;
             timelineBlock = (
                 <div className="Messages">
-                    {this.getPosts().map((ev) => {
+                    {this.getMessages().map((ev) => {
                         hasEntries = true;
                         return (
                             <Message

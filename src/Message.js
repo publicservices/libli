@@ -178,7 +178,6 @@ class Message extends React.Component {
         if (!event) {
             return <div></div>;
         }
-        let handler = this.onMessageClick.bind(this);
 
         let image;
         if (event.content.url) {
@@ -187,8 +186,8 @@ class Message extends React.Component {
 		    <img
 			alt="user upload"
 			className="userImage"
-			onClick={handler}
-			src={this.context.client.downloadLink(event.content.url)}
+		    src={this.context.client.downloadLink(event.content.url)}
+		    onClick={this.handleMessageClick.bind(this)}
 		    	loading="lazy"
                     />
 		</picture>

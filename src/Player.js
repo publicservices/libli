@@ -8,42 +8,33 @@ class Player {
         }
     }
 
-    play({track, tracks, channel}) {
+    play({event, events, source}) {
+	console.log(event, events, source)
 	const $player = document.querySelector('library-player')
-	const playlist = this.buildPlaylist({tracks, channel})
-	console.log($player)
+	const playlist = this.buildPlaylist({events, source})
+	console.log('player', $player)
 	$player.updatePlaylist(playlist)
     }
 
-    buildPlaylist({tracks, channel}) {
+    buildPlaylist({events, source}) {
 	// Create a playlist.
 	const playlist = {
-	    title: channel.displayname,
-	    image: channel.avatar_url,
-	    tracks: this.serializeTracks(tracks)
+	    title: source.displayname,
+	    image: source.avatar_url,
+	    events: this.serializeEvents(events)
 	}
 	return playlist
     }
-    serializeTracks(tracks) {
-	return tracks.map(track => {
+    serializeEvents(events) {
+	return events.map(event => {
 	    return {
-		id: track.event_id,
-		title: track.content.trackTitle,
-		url: track.content.trackUrl
+		id: event.event_id,
+		text: event.text,
+		dataUri: event.url,
+		title: event.content.title,
+		mediaUrl: event.content.mediaUrl,
 	    }
 	})
-	/* [
-	   {
-	   id: '1',
-	   title: 'Randomfunk.ogg',
-	   url: 'https://ia801409.us.archive.org/5/items/DWK051/Rare_and_Cheese_-_01_-_Randomfunk.ogg'
-	   },
-	   {
-	   id: '2',
-	   title: 'Rare and Cheese - Jazzpolice',
-	   url: 'https://ia801409.us.archive.org/5/items/DWK051/Rare_and_Cheese_-_02_-_Jazzpolice.ogg'
-	   }
-	   ] */
     }
 }
 

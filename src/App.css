@@ -13,7 +13,10 @@ html {
     --color-text-light: white;
     --color-text-placeholder: darkgray;
     --color-white: white;
+    --color-background: var(--color-white);
     --color-background-modal: whitesmoke;
+    --color-button-light: lightgray;
+    --color-button-light-hover: gray;
 
     --color-button-dark: gray;
     --size-container: 40rem;
@@ -59,20 +62,25 @@ summary {
 
 .AppHeader{
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     flex-grow: 0;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
+
+    position: sticky;
+    top: 0;
+    max-width: 100vw;
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
 .AppHeaderItem {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-}
-.AppHeaderItem {
-    margin: 0.5rem;
+    position: sticky;
+    left: 0;
+    background-color: var(--color-background);
 }
 
 .headerButton {
@@ -102,6 +110,7 @@ summary {
 .titleAndLogo {
     display: flex;
     align-items: center;
+    user-select: none;
 }
 .titleAndLogo a {
     padding: 0.5rem;
@@ -146,6 +155,7 @@ button:hover{
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 2rem;
+    min-width: 2rem;
     transition: max-width 500ms ease-in-out;
 }
 @media (min-width: 40rem) {
@@ -169,11 +179,16 @@ button:hover{
     bottom: 0;
     left: 0;
     z-index: 2;
-    padding: 1rem;
+    padding: 0.3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+@media (min-width: 40rem) {
+    .Modal{
+	padding: 1rem;
+    }
 }
 
 .ModalHeader{
@@ -201,9 +216,14 @@ button:hover{
 }
 .ModalMain{
     background-color: var(--color-background-modal);
-    padding: 1.5rem;
+    padding: 0.5rem;
     width: 100%;
     max-width: 40rem;
+}
+@media (min-width: 30rem) {
+    .ModalMain {
+	padding: 1.5rem;
+    }
 }
 
 .closeButton{
@@ -226,15 +246,25 @@ button:hover{
 
 /* custom r4 player */
 .Player {
-    display: none;
+    max-height: 0;
+    opacity: 0;
+    user-select: none;
+    transition: max-height 200ms ease-in-out, opacity 200ms ease-in-out,;
+    z-index: -1;
 }
 .Player--isPlaying {
-    display: block;
+    z-index: 1;
     position: sticky;
     top: 0;
+    max-height: 100%;
+    opacity: 1;
 }
 .Player radio4000-player {
     height: 100%;
+}
+
+.Player--isPlaying + .AppMain {
+    margin-top: 2rem;
 }
 
 
@@ -251,11 +281,14 @@ button:hover{
 }
 .FormItemSubmit {
     align-items: flex-end;
+    padding-top: 1rem;
 }
 .FormItemHorizontal {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-start;
 }
 .FormItemHorizontal .FormItemTitle {
     margin-right: 1rem;
@@ -289,4 +322,26 @@ button:hover{
 .Textarea {
     min-width: 100%;
     max-width: 100%;
+}
+
+
+/* player */
+library-player {
+    padding: 2rem;
+    display: flex;
+    background-color: var(--color-background-modal);
+    border: 0.1rem solid transparent;
+    margin: 0.3rem;
+    transition: border-color 200ms ease-in-out;
+    max-height: 30vh;
+    max-width: 95vw;
+}
+
+player-view {
+    display: flex;
+    overflow-x: scroll;
+}
+
+library-player:hover {
+    border-color: var(--color-text);
 }

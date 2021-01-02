@@ -37,6 +37,17 @@
 .MessageMedia{
     display: block;
 }
+.MessageContent {
+    display: flex;
+    flex-direction: column;
+}
+.buttonPlay {
+    align-self: flex-end;
+    color: var(--color-button-light);
+}
+.buttonPlay:hover {
+    color: var(--color-button-light-hover);
+}
 
 .MessageMediaUrl {
     overflow: hidden;

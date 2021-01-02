@@ -1,6 +1,6 @@
 .errblock {
     background-color: lightcoral;
-    padding: 15px;
+    padding: 0.5rem;
 }
 
 .UserPage{
@@ -8,37 +8,39 @@
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
+    margin-top: 1rem;
 }
 
 .UserPageHeader{
-    max-width: var(--size-container);
-    width: 90%;
-    background: whitesmoke;
-    border-radius: 0.2rem;
-    padding: 1rem;
-    margin: 2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    max-width: 100vw;
 }
 
-.UserPageBody{
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+.userSection {
+    overflow-x: scroll;
+    scrollbar-width: none;
+    
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
 }
 
 .displayName{
-    font-style: normal;
     font-weight: bold;
-
-    margin-bottom: 0.5rem;
-
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    margin-right: 0.5rem;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
 }
 
 .userName{
-    max-width: 60vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-style: italic;
+    font-size: 0.8rem;
     white-space: nowrap;
 }
 @media (min-width: 40rem) {
@@ -53,38 +55,20 @@
     justify-content: space-around;
 }
 
-.tabSelected {
-    background: #F7F7F7;
-    border-radius: 12px 12px 0px 0px;
-}
-
 .tab{
-    font-family: Inter;
-    font-style: normal;
     font-weight: 600;
-    font-size: 15px;
-    line-height: 18px;
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-    color: #2952BE;
+    padding: 0.5rem;
     flex-grow: 1;
     cursor: pointer;
 }
 
 .emptyList {
-    padding: 8px;
+    padding: 0.5rem;
     text-align: center;
 }
 
 .userAvatar{
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     max-width: 2rem;
     max-height: 2rem;
-}
-
-.userSection {
-    display: flex;
-    align-items: center;
 }

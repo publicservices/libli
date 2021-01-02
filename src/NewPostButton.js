@@ -6,7 +6,7 @@ export default ({onNewPostClick}) => {
 	    className="button headerButton"
 	    onClick={onNewPostClick}
         >
-	    New post
+	    Post
         </button>
     )
 }

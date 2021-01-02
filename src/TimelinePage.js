@@ -96,7 +96,7 @@ class TimelinePage extends React.Component {
                 );
             } else {
                 timelineBlock = (
-                    <div>
+                    <div className="Messages">
                         {this.state.timeline
                             .filter((ev) => {
                                 // only messages

@@ -232,12 +232,6 @@ class Client {
 
         // filter only @# rooms then add in all timeline events
         const roomIds = Object.keys(syncData.rooms.join).filter((roomId) => {
-
-	    // bypass, do not filter for now
-	    if (false) {
-		return true
-	    }
-
             // try to find an #@ alias
             let foundAlias = false;
 
@@ -256,6 +250,9 @@ class Client {
             }
             return foundAlias;
         });
+
+
+	/* get all events from all rooms */
         let events = [];
         for (let roomId of roomIds) {
             for (let ev of syncData.rooms.join[roomId].timeline.events) {

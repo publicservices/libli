@@ -1,30 +1,5 @@
-.UserPage{
-    margin-top: 16px;
-}
 
-.UserPageBody{
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
 
-.userName{
-    /* Body SemiBold */
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-
-    /* Light / Primary content */
-    color: #17191C;
-
-    margin-bottom: 8px;
-}
-
-.sendButton{
-    cursor: pointer;
-    margin: 8px;
-}
 
 .tabGroup{
     display: none;
@@ -32,36 +7,3 @@
     justify-content: space-around;
 }
 
-.tabSelected {
-    background: #F7F7F7;
-    border-radius: 12px 12px 0px 0px;
-}
-
-.tab{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 18px;
-    text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-    color: #2952BE;
-    flex-grow: 1;
-    cursor: pointer;
-}
-
-.emptyList {
-    padding: 8px;
-    text-align: center;
-}
-
-.timelineTitle{
-    padding: 8px;
-    text-align: center;
-}
-
-.inputPostTimeline {
-    padding: 20px;
-}

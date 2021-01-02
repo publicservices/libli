@@ -82,13 +82,13 @@ class InputPost extends React.Component {
         if (!this.props.client.accessToken) {
             return <div />;
         }
-        let classes = "inputPostSendButton";
+        let classes = "button darkButton inputPostSendButton";
         return (
             <button
-                alt="Create track"
+                alt="Create new post"
                 className={classes}
                 onClick={this.onPostClick.bind(this)}
-            >Add</button>
+            >Post</button>
         );
     }
 
