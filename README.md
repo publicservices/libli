@@ -1,25 +1,35 @@
-# library.cerulean
+# library list 
 
-A fork of [cerulean.matrix.org](https://cerulean.matrix.org) (and [r4.cerulean](https://github.com/internet4000/r4-cerulean)), to test and see what this whole can do.
+library list is a experimental [Matrix](https://matrix.org) client,
+fork of[cerulean](https://matrix.org/blog/2020/12/18/introducing-cerulean)
+(and [r4.cerulean](https://github.com/internet4000/r4-cerulean)).
 
-Trying to use the matrix messages and rooms to allow users to publish media, text and link content.
+## Usage
 
+- register an account through the website, or any other matrix client;
+  you can use the server `matrix.org` or `dendrite.matrix.org`, two public
+  instances of matrix
+- login, and start posting; the posts go to your user's public timeline
+- you can view and edit your activity in [app.element.io](https://app.element.io) with the same user (and server!).
 
-# Cerulean
+## help
 
-Cerulean is a highly experimental [Matrix](https://matrix.org) client intended to
-demonstrate the viability of freestyle public threaded conversations a la Twitter.
+Comme chat through matrix
+[matrix.to/#publicservices:matrix.org](https://matrix.to/#/#publicservices:matrix.org)
+for any question.
 
-As such, it is built as simply as possible, in order to demonstrate to someone
-unfamiliar with Matrix how the Client Server API can be used in this manner.
-It has no dependencies (other than create-react-app) and has no optimisations.
-It uses a naive View+Model architecture for legibility (although ideally it'd
-grow to be MVVM in future).
+## Why?
 
-For more info, see https://matrix.org/blog/2020/12/18/introducing-cerulean
+This is a test to see what can be done with Matrix.
 
+It seems Matrix can be used as replacement backend for many type of
+applications, and simple clients (like this one) can plug on top to
+help manage and present the data to users.
 
-## To Run dev server
+There seem to be a lot of possibilities, putting the user back in
+control of their data.
+
+## Development
 
 ```
 yarn install
