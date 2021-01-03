@@ -75,7 +75,7 @@ export default ({
 
 	    <footer className="ModalFooter">
 		<p>
-		    Also try login on <a href="https://app.element.io">element.io</a>, with the same user, to see what is happening with your data.
+		    Note: try to also login with the <a href="https://app.element.io">element.io</a> matrix client, with the same user, to see in details what is happening with your data.
 		</p>
 	    </footer>
         </Modal>

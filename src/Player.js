@@ -12,6 +12,7 @@ class Player {
 	const $player = document.querySelector('library-player')
 	const playlist = this.buildPlaylist({events, source})
 	$player.updatePlaylist(playlist)
+	$player.setAttribute('event-id', event.event_id)
     }
 
     buildPlaylist({events, source}) {

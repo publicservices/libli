@@ -127,14 +127,14 @@ class TimelinePage extends React.Component {
                 if (!hasEntries) {
                     timelineBlock = (
                         <div className="emptyList">
-                            Not much to see yet. Check {" "}
+                            Not much to see yet.<br/>
+			    Check {" "}
                             <a
-                                href={
-                                    "/@library:dendrite.matrix.org"
-                                }
-                            >
-                                matrix cerulean library test
-                            </a>
+				href={"/@library:dendrite.matrix.org"}
+				title="An example of profile timeline, when matrix is used with the libli client."
+			    >
+				@library:dendrite.matrix.org
+                            </a>.
                         </div>
                     );
                 }
